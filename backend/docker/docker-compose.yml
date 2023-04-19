@@ -1,0 +1,25 @@
+version: '3.9'
+
+services:
+  database: 
+    image: postgres
+    ports:
+      - 5432:5432
+    container_name: entrevista
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=entrevista
+      - POSTGRES_DB=database
+
+volumes:
+  pgdata:
+    driver: local
+
+
+    
+
+
+
+
+    
