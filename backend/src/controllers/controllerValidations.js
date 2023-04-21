@@ -1,10 +1,8 @@
 const { Prisma } = require('@prisma/client')
 
-
-
 function validationPrismaClient(error){
     if (error instanceof Prisma.PrismaClientValidationError) {
-        return "Failed to create user because some datas are type wrong. Please check your input and try again."
+        return "Failed to create user because some datas are type wrong or is missing field. Please check your input and try again."
     }
 
     if (error instanceof Prisma.PrismaClientKnownRequestError) {
@@ -19,6 +17,12 @@ function validationPrismaClient(error){
 
 }
 
+function hasEmptyValues(data){
+    return Object.values(data).every(value => value.trim() !== '')
+    
+}
+
 module.exports = {
-    validationPrismaClient
+    validationPrismaClient,
+    hasEmptyValues
 }
