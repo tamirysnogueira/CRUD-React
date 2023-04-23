@@ -1,10 +1,12 @@
-const {validationPrismaClient} = require('./controllerValidations')
+const {validationPrismaClient, verifyAdmin} = require('./validationsController')
 
 const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
 
 
 async function getUsers (req, res) {
+    if(verifyAdmin(req.user.email)) return res.status(403).json('Access denied')
+
     const allUsers = await prisma.user.findMany({
         select: {
             email: true,
@@ -16,6 +18,8 @@ async function getUsers (req, res) {
 }
 
 async function updateDataUser(req, res) {
+    if(verifyAdmin(req.user.email)) return res.status(403).json('Access denied')
+
     const {name, email} = req.body
 
     try {
@@ -29,7 +33,7 @@ async function updateDataUser(req, res) {
             }
         })
 
-        return res.status(201).json(updateUser)
+        return res.status(204).json(updateUser)
         
     } catch (err) {
         //verifica o tipo de erro do Prisma
@@ -39,15 +43,18 @@ async function updateDataUser(req, res) {
 }
 
 async function deleteUser(req, res) {
+    if(verifyAdmin(req.user.email)) return res.status(403).json('Access denied')
+
     try {
         const {email} = req.body
-        const deleteUser = await prisma.user.delete({
+        
+        await prisma.user.delete({
             where: {
                 email
             }
         })
     
-        return res.status(201).json(deleteUser)
+        return res.status(204).send()
     } catch (e) {
         //verifica o tipo de erro do Prisma
         const descriptionOfError = validationPrismaClient(e)
