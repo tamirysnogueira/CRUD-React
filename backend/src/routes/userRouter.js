@@ -1,8 +1,8 @@
-const {verifyDataUser} = require('../controllers/userController.js')
+const {verifyDataUser, login} = require('../controllers/userController.js')
 
-const express = require('express')
-const userRoutes = express.Router()
+const userRoutes = require('express').Router()
 
 userRoutes.post('/makeUser', verifyDataUser)
+userRoutes.post('/login', login)
 
 module.exports = userRoutes
