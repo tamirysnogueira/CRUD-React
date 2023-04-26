@@ -1,0 +1,16 @@
+.Welcome {
+    display: flex;
+
+    width: calc(100% - 1rem);
+    height: calc(100vh - 1rem);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #32A9FF;
+
+    margin: 0.5rem 0 0.5rem 0.5rem;
+    border-radius: 1rem;
+
+}
