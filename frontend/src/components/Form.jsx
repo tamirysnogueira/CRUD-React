@@ -1,22 +1,74 @@
-import { useState } from 'react'
-import Button from './Button'
-import '../styles/Form.css'
+import { useForm } from "react-hook-form";
+import axios from "axios"
 
-const Form = () => {
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [name, setName] = useState('')
-    
+import '../styles/componentsStyles/Form.css'
+
+const Form = (props) => {
+    const { register, handleSubmit, formState: { errors } } = useForm();
+
+    function submitLoginForm(data) {
+        
+    }
+
+    async function submitRegistrationForm(data) {
+        const {name, email, password} = data
+
+        const createUser = await axios
+            .post('http://localhost:3333/makeUser', {
+                name,
+                email,
+                password
+
+            })
+            .then((res) => console.log(res.data))
+            .catch((err) => {
+                console.error(err)
+            })
+    }
+
     return (
-        <form method='POST' action='/login' className='Form'>
-            <input type="text" name="Name" placeholder='Your name' value={name} onChange={(event) => setName(event.target.value)}/>
+        <form className='Form' onSubmit={handleSubmit(props.typeForm === 'Register' ? submitRegistrationForm : submitLoginForm)}>
 
-            <input type="email" name="Email" placeholder='you@hotmail.com' value={email} onChange={(event) => setEmail(event.target.value)}/>
+            {props.typeForm === 'Register' && (
+                <label>
+                    <input 
+                    className={errors?.name && 'inputNotValid'}
+                    type="text" 
+                    name="Name" 
+                    placeholder='Your name' 
+                    {...register("name", { minLength: 3, required: true})}
+                    />
+                    {errors.name?.type === 'minLength' && <p role="alert">First name is required</p>}
+                </label>
+                
+            )}
 
-            <input type="password" name="Password" placeholder='At latest 8 characters' value={password} onChange={(event) => setPassword(event.target.value)}/>
+            <label>
+                <input 
+                    className={errors?.email && 'inputNotValid'}
+                    type="email" 
+                    name="Email" 
+                    placeholder='you@hotmail.com' 
+                    {...register("email", { pattern: /^\S+@\S+\.\S+$/, required: true})}  
+                />
+
+            </label>
+
+            <label>
+                <input 
+                    className={errors?.password && 'inputNotValid'}
+                    type="password" 
+                    name="Password" 
+                    placeholder='At latest 8 characters' 
+                    {...register("password", { minLength: 8, required: true})}
+                />
+
+            </label>
 
             
-            <Button></Button>
+            <button className='ButtonAble' type='submit'>
+                {props.typeForm}
+            </button>
         </form>
     )
 }

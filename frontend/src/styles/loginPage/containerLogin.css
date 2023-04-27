@@ -1,3 +1,21 @@
+.containerLogin {
+    width: 100%;
+    height: 100vh;
+
+    padding: 0 2rem 0 2rem;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    background-color: white;
+
+    color: black;
+
+    overflow: hidden;
+
+    position: relative;
+}
+
 .Login {
     display: flex;
     flex-direction: column;
