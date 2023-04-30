@@ -8,7 +8,7 @@ import { ModalProvider } from '../contexts/ModalContext'
 export const userRouter = createBrowserRouter([
     {
         path: '/',
-        element: <Register />
+        element: <AuthProvider><Register /></AuthProvider>
     },
     {
         path: '/login',

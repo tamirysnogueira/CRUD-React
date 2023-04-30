@@ -5,7 +5,7 @@ import { api } from "../services/api"
 
 import '../styles/componentsStyles/UserScreen.css'
 
-export default function UserScreen(props) {
+export default function UserScreen() {
     const { logout, tokenUser } = useContext(AuthContext)
     const [dataUsers, setDataUsers] = useState([]);
 

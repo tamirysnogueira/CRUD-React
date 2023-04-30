@@ -8,7 +8,6 @@ const prisma = new PrismaClient()
 
 async function verifyDataUser(req, res) {
     const userData = req.body
-    console.log(userData)
 
     //hasEmptyValues verifica se há alguma propriedade vazia e se o email é válido
     if (hasEmptyValues(userData)) {
