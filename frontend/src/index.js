@@ -1,13 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { RouterProvider } from 'react-router-dom';
+import { userRouter } from './routes/userRoutes';
+
 import './styles/index.css';
-import Login from './pages/Login';
+
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   <React.StrictMode>
-    <Login/>
+      <RouterProvider router={userRouter} />
+
   </React.StrictMode>
 );
 

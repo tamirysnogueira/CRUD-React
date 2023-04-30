@@ -1,0 +1,104 @@
+.containerAuthentication {
+    width: 100%;
+    height: 100vh;
+  
+    padding: 0 2rem 0 2rem;
+  
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  
+    background-color: white;
+  
+    color: black;
+  
+    overflow: hidden;
+  
+    position: relative;
+}
+
+.containerAuthentication .userForm {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+    padding: 0 1rem;
+
+    width: 100%;
+
+    height: 100vh;
+    background-color: rgb(254, 254, 254, 0.3);
+    border-radius: 1rem;
+
+    backdrop-filter: blur(1rem);
+
+    overflow: hidden;
+
+    position: relative;
+}
+
+.containerAuthentication .userForm .description {
+    max-width: 60rem;
+    width: 100%;
+
+}
+
+.containerAuthentication .userForm .descriptionUserForm  {
+    margin-bottom: 5rem;
+}
+
+.containerAuthentication .userForm .descriptionUserForm  h1 {
+    margin-bottom: 1rem;
+
+    font-size: 4rem;
+    font-weight: 500;
+}
+
+.userForm .descriptionUserForm  p {
+    font-size: 2rem;
+    font-weight: 500;
+
+    color: #b0b4b9;
+    
+}
+
+.containerAuthentication .userForm .description a {
+    display: flex;
+    justify-content: center;
+
+    margin-top: 5rem;
+
+    text-decoration: none;
+    color: #b0b4b9;
+
+    font-size: 1.7rem;
+    font-weight: 500;
+
+}
+
+.containerAuthentication .userForm .description a span {
+    color: #157afe;
+
+    margin-left: 0.8rem;
+}
+
+@media (max-width: 1000px) {
+    .containerAuthentication {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 350px) {
+    .containerAuthentication .userForm .description a {
+        font-size: 1.4rem;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .containerAuthentication .userForm .description a span {
+        margin-left: 0;
+    }
+}

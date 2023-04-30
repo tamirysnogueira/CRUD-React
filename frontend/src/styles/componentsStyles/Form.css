@@ -9,9 +9,26 @@
 
 .Form label {
     width: 100%;
+
+    
 }
 
-.Form input {
+.Form label div {
+    display: flex;
+    align-items: center;
+
+    position: relative;
+}
+
+.Form label div svg {
+    width: 2rem;
+    height: 2rem;
+
+    position: absolute;
+    left: 2rem;
+}
+
+.Form label div input {
     height: 5rem;
     width: 100%;
 
@@ -20,19 +37,47 @@
     border: 0;
 
     background-color: #f5f7f9;
-    padding: 2rem;
+    padding: 2rem 0 2rem 6rem;
     font-size: 1.5rem;
 }
 
-.Form input:focus {
+.Form label div input:focus {
     outline: 1px solid #157afe;
 }
 
-.Form .inputNotValid {
-    outline: 1px solid red;
+.Form label div > input:focus + svg {
+    stroke: #157afe;
 }
 
-.ButtonDisabled, .ButtonAble {
+.Form label div .inputNotValid {
+    outline: 1px solid red;
+
+    animation: invalid 0.3s;
+}
+
+@keyframes invalid {
+    25% {
+        transform: translate(10px);
+    }
+
+    50% {
+        transform: translate(-20px);
+    }
+
+    100% {
+        transform: translate(0);
+    }
+}
+
+.Form label p {
+    font-size: 1.3rem;
+    color: red;
+    font-weight: 500;
+
+    margin-top: 0.7rem;
+}
+
+.Form button {
     width: 100%;
     height: 5rem;
 
@@ -46,22 +91,12 @@
     margin-top: 1rem;
 
     transition: 0.3s ease-in-out;
-}
 
-.ButtonAble {
     background-color: #157afe;
     cursor: pointer;
 }
 
-.ButtonDisabled {
-    background-color: #848484;
-    opacity: 40%;
-    cursor: not-allowed;
-}
-
-
-
-.Button:hover {
+button:hover {
     filter: brightness(0.90);
 
 }

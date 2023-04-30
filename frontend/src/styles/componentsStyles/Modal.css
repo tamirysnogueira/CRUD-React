@@ -1,0 +1,42 @@
+.ModalSuccess, .ModalError {
+    top: 3rem;
+    right: 5rem;
+
+    max-width: 30rem;
+    height: 8rem;
+
+    width: 100%;
+
+    border-radius: 1rem;
+
+    color: rgb(255, 255, 255);
+    position: absolute;
+}
+
+.ModalSuccess {
+    background-color: rgb(81, 208, 64);
+}
+
+.ModalError {
+    background-color: rgb(202, 60, 52);
+}
+
+.ModalSuccess  p, .ModalError p {
+    font-size: 1.5rem;
+
+    margin: 20px 20px;
+
+    max-width: 23rem;
+    width: 100%;
+}
+
+@media (max-width: 400px) {
+    .ModalSuccess, .ModalError {
+        max-width: 25rem;
+        right: 0;
+    }
+
+    .ModalSuccess  p, .ModalError p {
+        font-size: 1.2rem;
+    }
+}

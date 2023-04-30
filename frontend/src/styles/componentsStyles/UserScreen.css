@@ -1,0 +1,73 @@
+.containerUser {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 100vh;
+
+    background: linear-gradient(139.27deg, #32A9FF -4.68%, rgba(103, 50, 255, 0.6) 89.09%);
+}
+
+.userDisplay {
+    background-color: azure;
+
+    border-radius: 1rem;
+
+    max-width: 60rem;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    margin: 0 3rem;
+    padding: 0 2rem;
+
+    height: 70rem;
+}
+
+.descriptionUser {
+    text-align: center;
+
+    margin-bottom: 5rem;
+}
+
+.descriptionUser h1 {
+    font-size: 4rem;
+
+    margin-bottom: 2rem;
+}
+
+.descriptionUser p {
+    font-size: 2rem;
+    color: rgb(124, 124, 124);
+}
+
+.descriptionUser p span {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #35a0ed;
+}
+
+.userDisplay button {
+    margin-top: 5rem;
+
+    max-width: 30rem;
+
+    width: 100%;
+    height: 5rem;
+
+    border: none;
+
+    color: white;
+    font-size: 2rem;
+
+    font-weight: 500;
+
+    background-color: #32A9FF;
+    border-radius: 0.5rem;
+
+    cursor: pointer;
+}

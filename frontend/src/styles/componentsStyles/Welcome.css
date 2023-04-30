@@ -7,10 +7,65 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 
-    background-color: #32A9FF;
+    position: relative;
 
     margin: 0.5rem 0 0.5rem 0.5rem;
     border-radius: 1rem;
 
+}
+
+.styleBackground {
+    content: '';
+
+    max-width: 50rem;
+    width: 100%;
+    height: 70rem;
+
+    z-index: 1;
+
+    background-color: #32A9FF;
+    filter: blur(80px);
+    
+    position: absolute;
+}
+
+.Welcome svg {
+    max-width: 50rem;
+    width: 100%;
+
+    z-index: 2;
+}
+
+.Welcome h1 {
+    font-size: 3rem;
+
+    color: white;
+
+    margin-top: 4rem;
+
+    z-index: 2;
+}
+
+@media (max-width: 1250px) {
+    .styleBackground {
+        max-width: 40rem;
+        width: 100%;
+        height: 70rem;
+    }
+
+    .Welcome svg {
+        width: 40rem;
+    }
+
+    .Welcome h1 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 1000px) {
+    .Welcome {
+        display: none;
+    }
 }
