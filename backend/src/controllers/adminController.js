@@ -5,12 +5,13 @@ const prisma = new PrismaClient()
 
 
 async function getUsers (req, res) {
-    if(verifyAdmin(req.user.email)) return res.status(403).json('Access denied')
+    if(!verifyAdmin(req.user.email)) {return res.status(403).json('Access denied')}
 
     const allUsers = await prisma.user.findMany({
         select: {
             email: true,
-            name: true
+            name: true,
+            id: true
         }
     })
 
@@ -18,14 +19,14 @@ async function getUsers (req, res) {
 }
 
 async function updateDataUser(req, res) {
-    if(verifyAdmin(req.user.email)) return res.status(403).json('Access denied')
+    if(!verifyAdmin(req.user.email)) {return res.status(403).json('Access denied')}
 
-    const {name, email} = req.body
+    const {name, email, id} = req.body
 
     try {
-        const updateUser = await prisma.user.update({
+        await prisma.user.update({
             where: {
-                email
+                id: Number(id)
             },
             data: {
                 name,
@@ -33,7 +34,7 @@ async function updateDataUser(req, res) {
             }
         })
 
-        return res.status(204).json(updateUser)
+        return res.status(200).json('Successfully edited user')
         
     } catch (err) {
         //verifica o tipo de erro do Prisma
@@ -43,7 +44,7 @@ async function updateDataUser(req, res) {
 }
 
 async function deleteUser(req, res) {
-    if(verifyAdmin(req.user.email)) return res.status(403).json('Access denied')
+    if(!verifyAdmin(req.user.email)) {return res.status(403).json('Access denied')}
 
     try {
         const {email} = req.body
@@ -54,7 +55,7 @@ async function deleteUser(req, res) {
             }
         })
     
-        return res.status(204).send()
+        return res.status(200).json('Successfully deleted user')
     } catch (e) {
         //verifica o tipo de erro do Prisma
         const descriptionOfError = validationPrismaClient(e)

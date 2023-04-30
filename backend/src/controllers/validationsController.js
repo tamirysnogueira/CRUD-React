@@ -16,6 +16,8 @@ function validationPrismaClient(error){
         }
     }
 
+    return 'Error'
+
 }
 
 function hasEmptyValues(data){

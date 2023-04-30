@@ -8,6 +8,7 @@ const prisma = new PrismaClient()
 
 async function verifyDataUser(req, res) {
     const userData = req.body
+    console.log(userData)
 
     //hasEmptyValues verifica se há alguma propriedade vazia e se o email é válido
     if (hasEmptyValues(userData)) {
@@ -52,8 +53,7 @@ async function login(req, res) {
     
             const token = jwt.sign({_id: user.id, email: user.email}, process.env.TOKEN_SECRET)
     
-            res.header('authorization-token', token)
-            res.status(200).json("User logged")
+            res.status(201).json(token)
             
         } catch (error) {
             res.status(400).json(error.message)
@@ -65,5 +65,21 @@ async function login(req, res) {
     }
 }
 
-module.exports = { verifyDataUser, login }
+async function myProfile (req, res) {
+    const email = req.user.email
+
+    const user = await prisma.user.findUnique({
+        where: {
+            email
+        },
+        select: {
+            email: true,
+            name: true
+        }
+    })
+
+    return res.status(200).json(user)
+}
+
+module.exports = { verifyDataUser, login, myProfile }
 
