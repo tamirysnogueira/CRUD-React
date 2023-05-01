@@ -55,6 +55,11 @@ O servidor começará a rodar
 <br/>
 <br/>
 
+## Senha e email do administrador
+
+PASSWORD_ADMIN="teste_tecnico_crud_react"
+EMAIL_ADMIN="admin@hotmail.com"
+
 ## Atualizações futuras
 
 Iniciar todo o projeto apenas executando o Docker Compose
