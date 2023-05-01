@@ -26,7 +26,7 @@ export const AuthProvider = ({ children }) => {
 
     const logout = () => {
         setTokenAdmin(``)
-        setEmailUser(``)
+        tokenUser(``)
         setEmailUser(``)
         setShouldNavigate(false)
 
