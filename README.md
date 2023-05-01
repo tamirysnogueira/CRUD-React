@@ -57,7 +57,7 @@ O servidor começará a rodar
 
 ## Senha e email do administrador
 
-PASSWORD_ADMIN="teste_tecnico_crud_react"
+PASSWORD_ADMIN="teste_tecnico_crud_react" <br/>
 EMAIL_ADMIN="admin@hotmail.com"
 
 ## Atualizações futuras
